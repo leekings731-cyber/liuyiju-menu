@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <title>六一居 · 茶膳预定</title>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             background-color: #F5F2EB;
             font-family: 'Georgia', 'Times New Roman', 'Songti SC', '宋体', serif;
             padding-bottom: 100px;
             color: #2C2B28;
         }
+
         :root {
             --tea-green: #2F5D3A;
-            --tea-light: #E8E0D3;
             --gold: #C9A96E;
-            --gold-light: #DFC99A;
             --dark: #3A3530;
         }
+
         .hero {
             background: linear-gradient(135deg, #2F5D3A 0%, #1E3A25 100%);
             padding: 48px 24px 40px;
@@ -31,6 +31,7 @@
             color: white;
             position: relative;
         }
+
         .hero::after {
             content: '';
             position: absolute;
@@ -40,27 +41,32 @@
             height: 4px;
             background: linear-gradient(90deg, var(--gold), var(--tea-green), var(--gold));
         }
+
         .logo-icon {
             font-size: 48px;
             margin-bottom: 8px;
         }
+
         .hero h1 {
             font-size: 28px;
             letter-spacing: 4px;
             font-weight: 500;
             margin-bottom: 8px;
         }
+
         .hero .sub {
             font-size: 12px;
             opacity: 0.8;
             letter-spacing: 2px;
         }
+
         .hero .desc {
             font-size: 14px;
             margin-top: 16px;
             opacity: 0.9;
             font-style: italic;
         }
+
         .admin-btn {
             position: fixed;
             bottom: 100px;
@@ -78,6 +84,7 @@
             z-index: 200;
             backdrop-filter: blur(4px);
         }
+
         .admin-modal {
             position: fixed;
             top: 50%;
@@ -92,17 +99,17 @@
             padding: 24px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
+
         .admin-modal.show {
             display: block;
         }
+
         .admin-modal h4 {
             font-size: 18px;
             margin-bottom: 20px;
             color: var(--tea-green);
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
+
         .admin-modal input, .admin-modal select {
             width: 100%;
             padding: 12px;
@@ -112,6 +119,7 @@
             font-size: 14px;
             font-family: inherit;
         }
+
         .admin-modal button {
             width: 100%;
             padding: 12px;
@@ -122,6 +130,7 @@
             font-size: 16px;
             margin-top: 8px;
         }
+
         .current-info {
             position: fixed;
             top: 100px;
@@ -136,6 +145,7 @@
             pointer-events: none;
             font-family: monospace;
         }
+
         .category-nav {
             background: white;
             padding: 12px 16px;
@@ -148,9 +158,11 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.05);
             white-space: nowrap;
         }
+
         .category-nav::-webkit-scrollbar {
             display: none;
         }
+
         .cat-item {
             padding: 8px 20px;
             border-radius: 40px;
@@ -161,16 +173,20 @@
             cursor: pointer;
             font-family: inherit;
         }
+
         .cat-item.active {
             background: var(--tea-green);
             color: white;
         }
+
         .menu-container {
             padding: 20px 16px;
         }
+
         .category-section {
             margin-bottom: 32px;
         }
+
         .category-title {
             font-size: 20px;
             font-weight: 500;
@@ -180,6 +196,7 @@
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
+
         .dish-card {
             background: white;
             border-radius: 20px;
@@ -188,9 +205,11 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             transition: transform 0.25s;
         }
+
         .dish-card:active {
             transform: scale(0.99);
         }
+
         .img-placeholder {
             width: 100%;
             height: 140px;
@@ -201,9 +220,11 @@
             color: var(--gold);
             font-size: 28px;
         }
+
         .dish-info {
             padding: 16px;
         }
+
         .dish-name {
             font-size: 18px;
             font-weight: 600;
@@ -213,22 +234,26 @@
             align-items: baseline;
             margin-bottom: 8px;
         }
+
         .dish-price {
             color: var(--gold);
             font-weight: 600;
             font-size: 18px;
         }
+
         .dish-desc {
             font-size: 13px;
             color: #8A8578;
             line-height: 1.4;
             margin-bottom: 14px;
         }
+
         .add-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .quantity-control {
             display: flex;
             align-items: center;
@@ -237,6 +262,7 @@
             border-radius: 30px;
             padding: 4px 8px;
         }
+
         .qty-btn {
             width: 30px;
             height: 30px;
@@ -248,12 +274,14 @@
             color: var(--tea-green);
             cursor: pointer;
         }
+
         .qty-num {
             font-size: 16px;
             font-weight: 500;
             min-width: 24px;
             text-align: center;
         }
+
         .cart-fab {
             position: fixed;
             bottom: 24px;
@@ -268,7 +296,9 @@
             box-shadow: 0 8px 20px rgba(47, 93, 58, 0.4);
             cursor: pointer;
             z-index: 200;
+            font-size: 28px;
         }
+
         .cart-badge {
             position: absolute;
             top: -5px;
@@ -282,6 +312,7 @@
             min-width: 22px;
             text-align: center;
         }
+
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -296,9 +327,11 @@
             display: flex;
             flex-direction: column;
         }
+
         .cart-sidebar.open {
             right: 0;
         }
+
         .cart-header {
             padding: 24px 20px;
             background: var(--tea-green);
@@ -307,6 +340,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .close-cart {
             background: none;
             border: none;
@@ -314,11 +348,13 @@
             font-size: 24px;
             cursor: pointer;
         }
+
         .cart-items {
             flex: 1;
             overflow-y: auto;
             padding: 16px;
         }
+
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -326,22 +362,27 @@
             padding: 12px 0;
             border-bottom: 1px solid #EFEBE4;
         }
+
         .cart-item-info {
             flex: 1;
         }
+
         .cart-item-name {
             font-weight: 500;
             margin-bottom: 4px;
         }
+
         .cart-item-price {
             font-size: 13px;
             color: var(--gold);
         }
+
         .cart-item-control {
             display: flex;
             gap: 12px;
             align-items: center;
         }
+
         .cart-qty-btn {
             width: 28px;
             height: 28px;
@@ -351,11 +392,13 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .cart-footer {
             padding: 20px;
             border-top: 1px solid #EFEBE4;
             background: #FDFCF9;
         }
+
         .cart-total {
             display: flex;
             justify-content: space-between;
@@ -363,6 +406,7 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         .submit-btn {
             width: 100%;
             background: var(--tea-green);
@@ -374,6 +418,7 @@
             font-weight: 500;
             cursor: pointer;
         }
+
         .overlay {
             position: fixed;
             top: 0;
@@ -384,9 +429,12 @@
             z-index: 250;
             display: none;
         }
+
         .overlay.show {
             display: block;
         }
+
+        /* 图片预览弹窗 */
         .image-preview-modal {
             position: fixed;
             top: 0;
@@ -401,20 +449,24 @@
             justify-content: center;
             padding: 20px;
         }
+
         .image-preview-modal.show {
             display: flex;
         }
+
         .preview-img {
             max-width: 100%;
             max-height: 70vh;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
+
         .preview-buttons {
             display: flex;
             gap: 20px;
             margin-top: 30px;
         }
+
         .preview-buttons button {
             padding: 12px 28px;
             border-radius: 40px;
@@ -423,105 +475,117 @@
             font-weight: 500;
             cursor: pointer;
         }
+
         .save-img-btn {
             background: var(--gold);
             color: #2C2B28;
         }
+
         .close-preview-btn {
             background: white;
             color: #333;
         }
-        .booking-card-template {
+
+        /* 手机端直接显示的图片模板（用于截图） */
+        .booking-card-visible {
             position: fixed;
             left: -9999px;
             top: 0;
-            width: 375px;
+            width: 350px;
             background: linear-gradient(145deg, #1E3A25 0%, #2F5D3A 100%);
-            border-radius: 32px;
-            padding: 28px 24px;
+            border-radius: 28px;
+            padding: 24px 20px;
             font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
         }
-        .booking-card-template .card-border {
+
+        .booking-card-visible .card-border {
             border: 1px solid rgba(201, 169, 110, 0.3);
-            border-radius: 24px;
-            padding: 24px 20px;
-            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+            padding: 20px 16px;
         }
-        .booking-card-template .logo-area {
+
+        .booking-card-visible .logo-area {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        .booking-card-template .resto-name {
-            font-size: 22px;
-            letter-spacing: 6px;
+
+        .booking-card-visible .resto-name {
+            font-size: 20px;
+            letter-spacing: 4px;
             color: var(--gold);
             font-weight: 500;
         }
-        .booking-card-template .resto-sub {
-            font-size: 9px;
+
+        .booking-card-visible .resto-sub {
+            font-size: 8px;
             color: rgba(201,169,110,0.7);
             letter-spacing: 2px;
             margin-top: 4px;
         }
-        .booking-card-template .divider {
+
+        .booking-card-visible .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 20px 0;
+            margin: 16px 0;
         }
-        .booking-card-template .info-row {
-            margin-bottom: 16px;
+
+        .booking-card-visible .info-row {
+            margin-bottom: 12px;
         }
-        .booking-card-template .info-label {
-            font-size: 11px;
+
+        .booking-card-visible .info-label {
+            font-size: 10px;
             color: rgba(201,169,110,0.7);
             letter-spacing: 1px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
-        .booking-card-template .info-value {
-            font-size: 15px;
+
+        .booking-card-visible .info-value {
+            font-size: 14px;
             color: #F5F2EB;
             font-weight: 500;
         }
-        .booking-card-template .dish-list {
-            margin: 16px 0;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .booking-card-template .dish-item {
+
+        .booking-card-visible .dish-item {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 12px;
             color: #E8E0D3;
-            padding: 6px 0;
+            padding: 5px 0;
             border-bottom: 0.5px solid rgba(201,169,110,0.2);
         }
-        .booking-card-template .total-row {
-            margin-top: 16px;
-            padding-top: 12px;
+
+        .booking-card-visible .total-row {
+            margin-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid rgba(201,169,110,0.4);
             display: flex;
             justify-content: space-between;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: var(--gold);
         }
-        .booking-card-template .footer-text {
-            font-size: 9px;
+
+        .booking-card-visible .footer-text {
+            font-size: 8px;
             text-align: center;
             color: rgba(201,169,110,0.5);
-            margin-top: 20px;
+            margin-top: 16px;
         }
     </style>
 </head>
 <body>
+
 <div class="hero">
     <div class="logo-icon">🍃</div>
     <h1>六一居</h1>
     <div class="sub">LIU YI JU · TEA & CUISINE</div>
     <div class="desc">以茶入馔 · 不时不食 · 预约雅席</div>
 </div>
-<div class="current-info" id="currentInfoDisplay">⚙️ 未设置房间号</div>
+
+<div class="current-info" id="currentInfoDisplay">⚙️ 点击设置房间号/日期</div>
 <div class="admin-btn" id="adminBtn">⚙️</div>
+
 <div class="admin-modal" id="adminModal">
     <h4>🍃 商家预填信息</h4>
     <input type="text" id="roomNumber" placeholder="房间号 / 桌号（如：101 / 牡丹厅）">
@@ -532,12 +596,15 @@
     </select>
     <button id="saveAdminInfo">保存</button>
 </div>
+
 <div class="category-nav" id="categoryNav"></div>
 <div class="menu-container" id="menuContainer"></div>
+
 <div class="cart-fab" id="cartFab">
-    <span>🛒</span>
+    🛒
     <span class="cart-badge" id="cartCount">0</span>
 </div>
+
 <div class="overlay" id="overlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
@@ -550,18 +617,23 @@
             <span>总计</span>
             <span id="cartTotal">¥0</span>
         </div>
-        <button class="submit-btn" id="submitOrderBtn">生成预约图片</button>
+        <button class="submit-btn" id="submitOrderBtn">📸 生成预约图片</button>
     </div>
 </div>
+
 <div class="image-preview-modal" id="imagePreviewModal">
     <img class="preview-img" id="previewImg" alt="预约图片">
     <div class="preview-buttons">
-        <button class="save-img-btn" id="saveImageBtn">📱 保存图片</button>
+        <button class="save-img-btn" id="saveImageBtn">📱 长按图片保存</button>
         <button class="close-preview-btn" id="closePreviewBtn">关闭</button>
     </div>
 </div>
-<div id="bookingCardTemplate" class="booking-card-template"></div>
+
+<!-- 用于生成图片的隐藏元素 -->
+<div id="bookingCardTemplate" class="booking-card-visible"></div>
+
 <script>
+    // 菜品数据
     const menuData = {
         "茶膳前味": [
             { id: 1, name: "龙井虾仁冻", desc: "西湖龙井茶香 · 手剥河虾仁", price: 88 },
@@ -586,12 +658,10 @@
             { id: 12, name: "老枞水仙", desc: "岩韵花香", price: 98 }
         ]
     };
+
     let cart = [];
-    let adminInfo = {
-        room: '',
-        date: '',
-        time: '晚餐 17:30-21:00'
-    };
+    let adminInfo = { room: '', date: '', time: '晚餐 17:30-21:00' };
+
     function loadAdminInfo() {
         const saved = localStorage.getItem('liuyiju_admin');
         if (saved) {
@@ -602,6 +672,7 @@
         }
         updateAdminDisplay();
     }
+
     function saveAdminInfo() {
         adminInfo.room = document.getElementById('roomNumber').value;
         adminInfo.date = document.getElementById('serviceDate').value;
@@ -612,6 +683,7 @@
         overlay.classList.remove('show');
         alert('预填信息已保存');
     }
+
     function updateAdminDisplay() {
         const displayDiv = document.getElementById('currentInfoDisplay');
         if (adminInfo.room && adminInfo.date) {
@@ -622,6 +694,7 @@
             displayDiv.innerHTML = `⚙️ 点击设置房间号/日期`;
         }
     }
+
     function renderMenu() {
         const categories = Object.keys(menuData);
         const navDiv = document.getElementById('categoryNav');
@@ -629,6 +702,7 @@
         
         navDiv.innerHTML = '';
         menuDiv.innerHTML = '';
+
         categories.forEach((cat, idx) => {
             const catBtn = document.createElement('div');
             catBtn.className = 'cat-item' + (idx === 0 ? ' active' : '');
@@ -639,6 +713,7 @@
                 document.getElementById(cat).scrollIntoView({ behavior: 'smooth', block: 'start' });
             };
             navDiv.appendChild(catBtn);
+
             const section = document.createElement('div');
             section.className = 'category-section';
             section.id = cat;
@@ -671,17 +746,20 @@
         });
         attachQuantityEvents();
     }
+
     function attachQuantityEvents() {
         document.querySelectorAll('.quantity-control').forEach(ctrl => {
             const dishId = parseInt(ctrl.dataset.id);
             const decrBtn = ctrl.querySelector('.decr');
             const incrBtn = ctrl.querySelector('.incr');
             const qtySpan = ctrl.querySelector('.qty-num');
+
             const updateDisplay = () => {
                 const item = cart.find(i => i.id === dishId);
                 qtySpan.innerText = item ? item.quantity : 0;
                 updateCartUI();
             };
+
             decrBtn.onclick = (e) => {
                 e.stopPropagation();
                 const idx = cart.findIndex(i => i.id === dishId);
@@ -690,8 +768,8 @@
                     else cart.splice(idx, 1);
                 }
                 updateDisplay();
-                if (window.navigator.vibrate) window.navigator.vibrate(20);
             };
+
             incrBtn.onclick = (e) => {
                 e.stopPropagation();
                 const dish = findDishById(dishId);
@@ -699,11 +777,11 @@
                 if (idx !== -1) cart[idx].quantity++;
                 else cart.push({ ...dish, quantity: 1 });
                 updateDisplay();
-                if (window.navigator.vibrate) window.navigator.vibrate(20);
             };
             updateDisplay();
         });
     }
+
     function findDishById(id) {
         for (let cat of Object.values(menuData)) {
             const found = cat.find(d => d.id === id);
@@ -711,6 +789,7 @@
         }
         return null;
     }
+
     function updateCartUI() {
         const totalQty = cart.reduce((sum, i) => sum + i.quantity, 0);
         document.getElementById('cartCount').innerText = totalQty;
@@ -756,6 +835,7 @@
             };
         });
     }
+
     const cartFab = document.getElementById('cartFab');
     const cartSidebar = document.getElementById('cartSidebar');
     const overlay = document.getElementById('overlay');
@@ -767,6 +847,7 @@
     cartFab.onclick = openSidebar;
     closeCart.onclick = closeSidebar;
     overlay.onclick = closeSidebar;
+
     const adminBtn = document.getElementById('adminBtn');
     const adminModal = document.getElementById('adminModal');
     adminBtn.onclick = () => {
@@ -774,6 +855,40 @@
         overlay.classList.add('show');
     };
     document.getElementById('saveAdminInfo').onclick = saveAdminInfo;
+
+    // 生成图片（使用 dom-to-image 替代 html2canvas，手机端更稳定）
+    function generateImage(element) {
+        return new Promise((resolve, reject) => {
+            // 获取元素的实际尺寸
+            const width = element.offsetWidth;
+            const height = element.offsetHeight;
+            
+            // 创建 canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = width * 2;  // 2倍分辨率，更清晰
+            canvas.height = height * 2;
+            const ctx = canvas.getContext('2d');
+            
+            // 绘制背景
+            ctx.fillStyle = '#1E3A25';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // 使用 html2canvas 但设置更兼容的参数
+            html2canvas(element, {
+                scale: 2,
+                backgroundColor: '#1E3A25',
+                useCORS: false,
+                logging: false,
+                allowTaint: true,
+                foreignObjectRendering: false
+            }).then(canvasResult => {
+                resolve(canvasResult.toDataURL('image/png'));
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
     const submitBtn = document.getElementById('submitOrderBtn');
     
     submitBtn.onclick = async () => {
@@ -781,37 +896,46 @@
             alert('请先选菜');
             return;
         }
+        
         if (!adminInfo.room || !adminInfo.date) {
-            alert('商家未设置房间号和日期，请先点击右下角⚙️设置');
+            alert('请先点击右下角⚙️设置房间号和日期');
             return;
         }
+        
+        // 显示加载提示
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = '⏳ 生成中...';
+        submitBtn.disabled = true;
+        
         const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        
         const dishListHtml = cart.map(item => `
             <div class="dish-item">
                 <span>${item.name} x${item.quantity}</span>
                 <span>¥${item.price * item.quantity}</span>
             </div>
         `).join('');
+        
         const templateHtml = `
             <div class="card-border">
                 <div class="logo-area">
-                    <div class="logo-icon">🍃</div>
+                    <div class="logo-icon" style="font-size: 36px;">🍃</div>
                     <div class="resto-name">六一居</div>
                     <div class="resto-sub">LIU YI JU · TEA & CUISINE</div>
                 </div>
                 <div class="divider"></div>
                 <div class="info-row">
                     <div class="info-label">房间 / 雅席</div>
-                    <div class="info-value">${adminInfo.room}</div>
+                    <div class="info-value">${escapeHtml(adminInfo.room)}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">用餐日期</div>
-                    <div class="info-value">${adminInfo.date} · ${adminInfo.time}</div>
+                    <div class="info-value">${escapeHtml(adminInfo.date)} · ${escapeHtml(adminInfo.time)}</div>
                 </div>
                 <div class="divider"></div>
-                <div class="info-label" style="margin-bottom: 8px;">所选菜品</div>
-                <div class="dish-list">
-                    ${dishListHtml}
+                <div class="info-label" style="margin-bottom: 6px;">所选菜品</div>
+                <div style="max-height: 200px; overflow-y: auto;">
+                    ${dishListHtml || '<div style="color:#aaa; text-align:center;">暂无菜品</div>'}
                 </div>
                 <div class="total-row">
                     <span>总计</span>
@@ -820,36 +944,82 @@
                 <div class="footer-text">请截图此页面，发送给餐厅管家确认</div>
             </div>
         `;
+        
         const templateDiv = document.getElementById('bookingCardTemplate');
         templateDiv.innerHTML = templateHtml;
-        try {
-            const canvas = await html2canvas(templateDiv, {
-                scale: 2,
-                backgroundColor: null,
-                useCORS: true,
-                logging: false
-            });
-            const imgData = canvas.toDataURL('image/png');
-            const previewImg = document.getElementById('previewImg');
-            previewImg.src = imgData;
-            document.getElementById('imagePreviewModal').classList.add('show');
-            closeSidebar();
-            document.getElementById('saveImageBtn').onclick = () => {
-                const link = document.createElement('a');
-                link.download = `六一居_${adminInfo.room}_${adminInfo.date}.png`;
-                link.href = imgData;
-                link.click();
-            };
-        } catch (err) {
-            console.error('生成图片失败:', err);
-            alert('生成图片失败，请重试');
-        }
+        
+        // 等待DOM渲染完成
+        setTimeout(async () => {
+            try {
+                // 动态加载 html2canvas
+                if (typeof html2canvas === 'undefined') {
+                    await loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js');
+                }
+                
+                const canvas = await html2canvas(templateDiv, {
+                    scale: 2,
+                    backgroundColor: '#1E3A25',
+                    useCORS: false,
+                    logging: false,
+                    allowTaint: true,
+                    foreignObjectRendering: false,
+                    windowWidth: templateDiv.scrollWidth,
+                    windowHeight: templateDiv.scrollHeight
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                const previewImg = document.getElementById('previewImg');
+                previewImg.src = imgData;
+                document.getElementById('imagePreviewModal').classList.add('show');
+                closeSidebar();
+                
+                // 手机端提示长按保存
+                const saveBtn = document.getElementById('saveImageBtn');
+                saveBtn.innerHTML = '📱 长按图片保存';
+                saveBtn.onclick = () => {
+                    // 提示用户长按保存
+                    alert('请长按上方图片，选择「保存图片」');
+                };
+                
+            } catch (err) {
+                console.error('生成图片失败:', err);
+                alert('生成图片失败，请稍后重试');
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+        }, 100);
     };
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
+    
     document.getElementById('closePreviewBtn').onclick = () => {
         document.getElementById('imagePreviewModal').classList.remove('show');
     };
+    
+    // 初始化
     loadAdminInfo();
     renderMenu();
 </script>
+<!-- 引入 html2canvas -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </body>
 </html>
